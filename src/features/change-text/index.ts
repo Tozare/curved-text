@@ -1,0 +1,1 @@
+export * as changeTextModel from "./model";

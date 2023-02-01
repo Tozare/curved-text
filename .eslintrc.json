@@ -1,0 +1,47 @@
+{
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+//    "plugin:import/errors",
+//    "plugin:import/warnings",
+    "plugin:effector/recommended"
+  ],
+  "plugins": ["effector"],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      },
+      "alias": {
+        "map": [
+          ["@src", "./src"],
+          ["@assets", "./assets"],
+          ["shared", "./src/shared"],
+          ["entities", "./src/entites"],
+          ["features", "./src/features"],
+          ["pages", "./src/pages"],
+          ["app", "./src/app"]
+        ],
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    },
+    "react": {
+      "version": "latest"
+    }
+  },
+  "rules": {
+//    "react/prop-types": "off",
+//    "@typescript-eslint/no-var-requires": "off"
+  }
+}
