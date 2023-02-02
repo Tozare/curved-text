@@ -1,0 +1,1 @@
+export { ChangeTextTypeSwitcher } from "./change-text-type-switcher";

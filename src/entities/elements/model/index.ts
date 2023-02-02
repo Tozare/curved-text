@@ -9,3 +9,4 @@ export const elementInitialized = createEvent<Element>();
 $element
   .on(elementChanged, (_, element) => element)
   .on(elementInitialized, (_, element) => element)
+

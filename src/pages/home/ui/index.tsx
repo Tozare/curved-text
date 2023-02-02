@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { Editor } from '@src/widgets/editor';
+import { SettingsMenu } from '@src/widgets/settings-menu';
 import { Box, Spinner, Text } from '@chakra-ui/react';
 import { getThemeColors } from '@src/shared/libs/get-theme-colors';
 import { reflect } from '@effector/reflect';
@@ -29,6 +30,7 @@ const HomePageView = ({ }: Props) => {
       >
         <Editor />
       </Box>
+      <SettingsMenu/>
     </Box>
   );
 }
