@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-// import { Editor } from '@src/widgets/editor';
+import { Editor } from '@src/widgets/editor';
 import { Box, Spinner, Text } from '@chakra-ui/react';
 import { getThemeColors } from '@src/shared/libs/get-theme-colors';
 import { reflect } from '@effector/reflect';
@@ -27,7 +27,7 @@ const HomePageView = ({ }: Props) => {
         alignItems="center"
         justifyContent="center"
       >
-        {/*<Editor />*/}
+        <Editor />
       </Box>
     </Box>
   );

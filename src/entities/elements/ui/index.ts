@@ -1,1 +1,1 @@
-export { Text } from "./text";
+export { CurvedText } from "./curved-text";

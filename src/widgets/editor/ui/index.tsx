@@ -1,31 +1,12 @@
 import { Box } from "@chakra-ui/react";
 import React from "react";
-import { Text, Element, elementsModel } from '@src/entities/elements';
 import { reflect } from '@effector/reflect';
-import { changeTextModel } from "@src/features/change-text";
 import { getThemeColors } from '@src/shared/libs/get-theme-colors';
+import { Stage, Layer, Rect, Text, Circle, Line, TextPath, Path } from 'react-konva';
 
-type Props = {
-  element: Element,
-  text: string,
-  onChangeText: (data: string) => void,
-  onSubmitText: () => void,
-}
+type Props = {}
 
-const EditorView = ({ element, text, onChangeText, onSubmitText }: Props) => {
-  const {
-    width,
-    height,
-    x,
-    y,
-    fontSize,
-    fontWeight,
-    fontFamily,
-    letterSpacing,
-    color,
-    lineHeight,
-    textAlign
-  } = element;
+const EditorView = ({  }: Props) => {
 
   const {
     background,
@@ -38,23 +19,21 @@ const EditorView = ({ element, text, onChangeText, onSubmitText }: Props) => {
       height="720px"
       backgroundColor={background}
     >
-      <Text
-        weight={width}
-        height={height}
-        fontFamily={fontFamily}
-        fontWeight={fontWeight}
-        fontSize={fontSize}
-        color={color}
-        letterSpacing={letterSpacing}
-        lineHeight={lineHeight}
-        textAlign={textAlign}
-        text={text}
-        defaultText={element.text}
-        onChangeText={onChangeText}
-        onSubmitText={onSubmitText}
-        x={x}
-        y={y}
-      />
+      <Stage width={600} height={720}>
+        <Layer>
+          <Text text="Some text on canvas" fontSize={15} />
+          <Rect
+            x={x}
+            y={y}
+            width={2*radius}
+            height={2*radius}
+            fill="red"
+            shadowBlur={10}
+          />
+          <Circle x={200} y={100} radius={50} fill="green" />
+          <TextPath fill="black" width={2 * radius} height={2 * radius} x={x} y={y} text={text} data={path}/>
+        </Layer>
+      </Stage>
     </Box>
   )
 }
@@ -62,9 +41,5 @@ const EditorView = ({ element, text, onChangeText, onSubmitText }: Props) => {
 export const Editor = reflect({
   view: EditorView,
   bind: {
-    element: elementsModel.$element,
-    text: changeTextModel.$text,
-    onSubmitText: changeTextModel.textSubmitted,
-    onChangeText: changeTextModel.textChanged,
   },
 });
