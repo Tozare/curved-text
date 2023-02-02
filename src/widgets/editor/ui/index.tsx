@@ -3,15 +3,34 @@ import React from "react";
 import { reflect } from '@effector/reflect';
 import { getThemeColors } from '@src/shared/libs/get-theme-colors';
 import { Stage, Layer, Rect, Text, Circle, Line, TextPath, Path } from 'react-konva';
+import { elementsModel, CurvedText, Element, CurvedTextElement } from '@src/entities/elements';
+type Props = {
+  element: Element,
+}
 
-type Props = {}
-
-const EditorView = ({  }: Props) => {
+const EditorView = ({ element }: Props) => {
 
   const {
     background,
   } = getThemeColors();
-
+  const {
+    fill,
+    fontFamily,
+    fontSize,
+    fontWeight,
+    x,
+    y,
+    height,
+    width,
+    type,
+    text,
+    textAlign,
+    letterSpacing,
+    lineHeight,
+    id,
+    fontStyle,
+    radius,
+  } = element as CurvedTextElement;
   return (
     <Box
       position="relative"
@@ -23,15 +42,28 @@ const EditorView = ({  }: Props) => {
         <Layer>
           <Text text="Some text on canvas" fontSize={15} />
           <Rect
+            x={element.x}
+            y={element.y}
+            width={100}
+            height={100}
+            fill="red"
+          />
+          <CurvedText
+            id={id}
+            fontSize={fontSize}
+            width={width}
+            height={height}
             x={x}
             y={y}
-            width={2*radius}
-            height={2*radius}
-            fill="red"
-            shadowBlur={10}
+            fontWeight={fontWeight}
+            fontFamily={fontFamily}
+            fontStyle={fontStyle}
+            fill={fill}
+            text={text}
+            lineHeight={lineHeight}
+            letterSpacing={letterSpacing}
+            radius={radius}
           />
-          <Circle x={200} y={100} radius={50} fill="green" />
-          <TextPath fill="black" width={2 * radius} height={2 * radius} x={x} y={y} text={text} data={path}/>
         </Layer>
       </Stage>
     </Box>
@@ -41,5 +73,6 @@ const EditorView = ({  }: Props) => {
 export const Editor = reflect({
   view: EditorView,
   bind: {
+    element: elementsModel.$element,
   },
 });

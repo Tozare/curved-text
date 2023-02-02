@@ -1,4 +1,5 @@
 import { Values } from '@src/shared/typings/object-values';
+import { CurvedTextElement } from '@src/entities/elements/typings';
 
 export const ELEMENT_TYPES = {
   TEXT: "TEXT",
@@ -10,6 +11,13 @@ export const TEXT_ALIGN_TYPES = {
   "CENTER": "center",
   "RIGHT": "right",
   "LEFT_RIGHT": "justify",
+} as const;
+
+export const TEXT_FONT_STYLES_TYPES = {
+  "NORMAL": "normal",
+  "BOLD": "bold",
+  "ITALIC": "italic",
+  "ITALIC_BOLD": "italic bold",
 } as const;
 
 
@@ -45,18 +53,21 @@ export const DEFAULT_COLORS= [
   "#BBBBBB",
 ] as const;
 
-export const DEFAULT_TEXT_ELEMENT = {
-  type: ELEMENT_TYPES.TEXT,
+export const DEFAULT_TEXT_ELEMENT: CurvedTextElement = {
+  id: "curvedText",
+  type: ELEMENT_TYPES.CURVED_TEXT,
   width: 100,
-  height: 16,
+  height: 100,
   fontFamily: "Arial",
   fontWeight: 500,
   fontSize: 14,
-  color: "#1E1E1E",
+  fill: "#1E1E1E",
   letterSpacing: 0.6,
   lineHeight: 16,
   textAlign: TEXT_ALIGN_TYPES.LEFT,
-  text: "Type Here...",
-  x: 30,
-  y: 30,
+  fontStyle: TEXT_FONT_STYLES_TYPES.NORMAL,
+  text: "Type Here... long text ma",
+  x: 300,
+  y: 300,
+  radius: 50,
 } as const;

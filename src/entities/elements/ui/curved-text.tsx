@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { TextPath } from 'react-konva';
+import { TextPath, Path } from 'react-konva';
 import { dataPathLib, textLib, rotationLib } from "@src/shared/libs";
 
 type Props = {
@@ -15,7 +15,6 @@ type Props = {
   fontWeight: number,
   fontStyle: string,
   fontSize: number,
-  color: string,
   letterSpacing: number,
   lineHeight: number,
 }
@@ -33,9 +32,9 @@ export const CurvedText = ({
   fontFamily,
   fontSize,
   letterSpacing,
+  lineHeight,
 }: Props) => {
   const [data, setData] = useState<string>("");
-
   useEffect(() => {
     const width = textLib.getTextWidth({
       fontSize,
@@ -60,15 +59,37 @@ export const CurvedText = ({
   }, [radius, text, fontSize, letterSpacing, fontStyle, fontWeight, fontFamily])
 
   return (
-    <TextPath
-      id={id}
-      fill={fill}
-      width={width}
-      height={height}
-      x={x}
-      y={y}
-      text={text}
-      data={data}
-    />
+    <>
+      <TextPath
+        id={id}
+        fill={fill}
+        width={width}
+        height={height}
+        x={x}
+        y={y}
+        text={text}
+        data={data}
+        fontWeight={fontWeight}
+        fontSize={fontSize}
+        letterSpacing={letterSpacing}
+        lineHeight={lineHeight}
+        fontFamily={fontFamily}
+      />
+      <Path
+        id={"path-test-view"}
+        stroke="black"
+        strokeWidth={1}
+        width={width}
+        height={height}
+        x={x}
+        y={y}
+        data={data}
+        fontWeight={fontWeight}
+        fontSize={fontSize}
+        letterSpacing={letterSpacing}
+        lineHeight={lineHeight}
+        fontFamily={fontFamily}
+      />
+    </>
   )
 }

@@ -5,6 +5,7 @@ import {
 import { Values } from '@src/shared/typings/object-values';
 
 interface ElementInit {
+  id: string,
   type: Values<typeof ELEMENT_TYPES>,
   width: number,
   height: number,
@@ -19,6 +20,7 @@ interface TextStylesInit {
   fill: string,
   letterSpacing: number,
   lineHeight: number,
+  fontStyle: string,
   textAlign: Values<typeof TEXT_ALIGN_TYPES>,
   text: string,
 }
