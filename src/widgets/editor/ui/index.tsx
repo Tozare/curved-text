@@ -3,7 +3,7 @@ import React from "react";
 import { reflect } from '@effector/reflect';
 import { getThemeColors } from '@src/shared/libs/get-theme-colors';
 import { Stage, Layer, Rect, Text, Circle, Line, TextPath, Path } from 'react-konva';
-import { elementsModel, CurvedText, Element, CurvedTextElement } from '@src/entities/elements';
+import { elementsModel, CurvedText, Element, CurvedTextElement, Selection } from '@src/entities/elements';
 type Props = {
   element: Element,
 }
@@ -30,6 +30,7 @@ const EditorView = ({ element }: Props) => {
     id,
     fontStyle,
     radius,
+    curve,
   } = element as CurvedTextElement;
   return (
     <Box
@@ -41,13 +42,7 @@ const EditorView = ({ element }: Props) => {
       <Stage width={600} height={720}>
         <Layer>
           <Text text="Some text on canvas" fontSize={15} />
-          <Rect
-            x={element.x}
-            y={element.y}
-            width={100}
-            height={100}
-            fill="red"
-          />
+
           <CurvedText
             id={id}
             fontSize={fontSize}
@@ -63,6 +58,13 @@ const EditorView = ({ element }: Props) => {
             lineHeight={lineHeight}
             letterSpacing={letterSpacing}
             radius={radius}
+            curve={curve}
+          />
+          <Selection
+            width={width}
+            height={height}
+            x={x}
+            y={y}
           />
         </Layer>
       </Stage>

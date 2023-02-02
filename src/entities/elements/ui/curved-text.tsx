@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { TextPath, Path } from 'react-konva';
 import { dataPathLib, textLib, rotationLib } from "@src/shared/libs";
+import * as elementsConfig from "../config";
 
 type Props = {
   id: string,
@@ -17,6 +18,7 @@ type Props = {
   fontSize: number,
   letterSpacing: number,
   lineHeight: number,
+  curve: number,
 }
 export const CurvedText = ({
   id,
@@ -26,16 +28,20 @@ export const CurvedText = ({
   y,
   text,
   fill,
-  radius,
+  // radius,
   fontStyle,
   fontWeight,
   fontFamily,
   fontSize,
   letterSpacing,
   lineHeight,
+  curve,
 }: Props) => {
   const [data, setData] = useState<string>("");
+  const radius = (1/(curve * curve)) * elementsConfig.MAX_RADIUS + 10;
   useEffect(() => {
+    // const absoluteCurve = Math.abs(1/curve) * Math.abs(1/curve)
+    console.log("radius", radius);
     const width = textLib.getTextWidth({
       fontSize,
       text,
@@ -53,11 +59,11 @@ export const CurvedText = ({
       y: radius,
       r: radius,
       deg: rotationDeg,
-      isTopArcStart: true,
+      isTopArcStart: curve > 0,
     });
     setData(path)
-  }, [radius, text, fontSize, letterSpacing, fontStyle, fontWeight, fontFamily])
-
+  }, [radius, text, fontSize, letterSpacing, fontStyle, fontWeight, fontFamily, curve])
+  const deltaX = radius - (width/2);
   return (
     <>
       <TextPath
@@ -65,7 +71,7 @@ export const CurvedText = ({
         fill={fill}
         width={width}
         height={height}
-        x={x}
+        x={x - deltaX}
         y={y}
         text={text}
         data={data}
@@ -81,7 +87,7 @@ export const CurvedText = ({
         strokeWidth={1}
         width={width}
         height={height}
-        x={x}
+        x={x - deltaX}
         y={y}
         data={data}
         fontWeight={fontWeight}

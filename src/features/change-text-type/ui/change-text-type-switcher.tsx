@@ -3,7 +3,7 @@ import * as model from "../model";
 import { reflect } from '@effector/reflect';
 import { elementsConfig } from "@src/entities/elements";
 import { Values } from '@src/shared/typings/object-values';
-import { Box, Button } from '@chakra-ui/react';
+import { Box, Button, Text } from '@chakra-ui/react';
 import { getThemeColors } from '@src/shared/libs/get-theme-colors';
 
 type Props = {
@@ -26,38 +26,53 @@ const ChangeTextTypeSwitcherView = ({
     primaryText,
     border,
     subBackground,
+    subText,
   } = getThemeColors();
 
   return (
-    <Box
-      display="flex"
-      flexDir="row"
-      width="100%"
-      justifyContent="space-between"
-    >
-      <Button
-        background={subBackground}
-        cursor="pointer"
-        onClick={() => onSwitchType(elementsConfig.ELEMENT_TYPES.TEXT)}
-        border={`1px solid ${activeType === elementsConfig.ELEMENT_TYPES.TEXT ? primaryButton : border}`}
-        borderRadius="6px"
-        width="130px"
-        height="40px"
+    <>
+      <Text
+        marginBottom="11px"
+        color={subText}
+        fontSize="12px"
+        lineHeight="14px"
       >
-        Original
-      </Button>
-      <Button
-        background={subBackground}
-        cursor="pointer"
-        onClick={() => onSwitchType(elementsConfig.ELEMENT_TYPES.CURVED_TEXT)}
-        border={`1px solid ${activeType === elementsConfig.ELEMENT_TYPES.CURVED_TEXT ? primaryButton : border}`}
-        borderRadius="6px"
-        width="130px"
-        height="40px"
+        Text type
+      </Text>
+      <Box
+        marginBottom="10px"
       >
-        Curved
-      </Button>
+        <Box
+          display="flex"
+          flexDir="row"
+          width="100%"
+          justifyContent="space-between"
+        >
+          <Button
+            background={subBackground}
+            cursor="pointer"
+            onClick={() => onSwitchType(elementsConfig.ELEMENT_TYPES.TEXT)}
+            border={`1px solid ${activeType === elementsConfig.ELEMENT_TYPES.TEXT ? primaryButton : border}`}
+            borderRadius="6px"
+            width="130px"
+            height="40px"
+          >
+            Original
+          </Button>
+          <Button
+            background={subBackground}
+            cursor="pointer"
+            onClick={() => onSwitchType(elementsConfig.ELEMENT_TYPES.CURVED_TEXT)}
+            border={`1px solid ${activeType === elementsConfig.ELEMENT_TYPES.CURVED_TEXT ? primaryButton : border}`}
+            borderRadius="6px"
+            width="130px"
+            height="40px"
+          >
+            Curved
+          </Button>
+      </Box>
     </Box>
+    </>
   )
 }
 

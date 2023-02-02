@@ -53,11 +53,20 @@ export const DEFAULT_COLORS= [
   "#BBBBBB",
 ] as const;
 
+export const MIN = 0;
+export const MAX_RADIUS = 100000;
+export const MIN_CURVE = -100;
+export const MAX_CURVE = 100;
+export const DEFAULT_CURVE = 0;
+export const STEP = 1;
+
+export const SELECTION_ID = "SELECTION_ID";
+
 export const DEFAULT_TEXT_ELEMENT: CurvedTextElement = {
   id: "curvedText",
   type: ELEMENT_TYPES.CURVED_TEXT,
-  width: 100,
-  height: 100,
+  width: 145,
+  height: 145,
   fontFamily: "Arial",
   fontWeight: 500,
   fontSize: 14,
@@ -66,8 +75,9 @@ export const DEFAULT_TEXT_ELEMENT: CurvedTextElement = {
   lineHeight: 16,
   textAlign: TEXT_ALIGN_TYPES.LEFT,
   fontStyle: TEXT_FONT_STYLES_TYPES.NORMAL,
-  text: "Type Here... long text ma",
+  text: "Type Here... long text",
   x: 300,
   y: 300,
   radius: 50,
+  curve: 40,
 } as const;

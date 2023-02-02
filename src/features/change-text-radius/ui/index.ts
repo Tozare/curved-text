@@ -1,1 +1,1 @@
-export { ChangeTextTypeSwitcher } from "./change-text-type-switcher";
+export { ChangeTextRadius } from "./change-text-radius";

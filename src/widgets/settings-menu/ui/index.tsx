@@ -2,6 +2,7 @@ import React from "react";
 import { Box, Text } from "@chakra-ui/react"
 import { getThemeColors } from '@src/shared/libs/get-theme-colors';
 import { ChangeTextTypeSwitcher } from "@src/features/change-text-type";
+import { ChangeTextRadius } from "@src/features/change-text-radius";
 type Props = {
 
 }
@@ -22,19 +23,8 @@ export const SettingsMenu = ({}: Props) => {
       paddingRight="15px"
       backgroundColor={background}
     >
-      <Text
-        marginBottom="11px"
-        color={subText}
-        fontSize="12px"
-        lineHeight="14px"
-      >
-        Text Effects
-      </Text>
-      <Box
-        marginBottom="10px"
-      >
-        <ChangeTextTypeSwitcher />
-      </Box>
+      <ChangeTextTypeSwitcher />
+      <ChangeTextRadius/>
     </Box>
   )
 }
