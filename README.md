@@ -1,7 +1,6 @@
 # Simple Text editor
 
-## App link:
-## Result: 
+## App link: https://fabulous-longma-aeed8f.netlify.app/
 ## Used technologies
 
 - React
