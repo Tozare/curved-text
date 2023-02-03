@@ -1,7 +1,8 @@
 import { createEvent, guard, restore, sample } from 'effector';
 import { Values } from '@src/shared/typings/object-values';
-import { elementsConfig, elementsModel, CurvedTextElement, TextElement } from '@src/entities/elements';
+import { elementsConfig, elementsModel, CurvedTextElement, TextElement, elementsLib } from '@src/entities/elements';
 import { $element } from '@src/entities/elements/model';
+import { textLib } from "@src/shared/libs";
 
 export const textTypeChanged = createEvent<Values<typeof elementsConfig.ELEMENT_TYPES> | null>();
 export const $textType = restore(textTypeChanged, elementsConfig.ELEMENT_TYPES.CURVED_TEXT);
@@ -25,8 +26,33 @@ sample({
   fn: (element) => {
     const copyElement = {...element} as CurvedTextElement;
     delete copyElement["radius"];
+    const {
+      fontFamily,
+      letterSpacing,
+      fontStyle,
+      fontWeight,
+      fontSize,
+      x,
+      width,
+      curve,
+      text,
+      lineHeight,
+    } = element as CurvedTextElement;
+
+    const textHeight = textLib.getTextHeight({
+      fontSize,
+      text,
+      letterSpacing,
+      fontStyle,
+      fontWeight,
+      fontFamily,
+      width,
+      lineHeight,
+    });
+
     return {
       ...copyElement,
+      height: textHeight,
       type: elementsConfig.ELEMENT_TYPES.TEXT,
     };
   },
@@ -40,10 +66,37 @@ sample({
   clock: curvedTextTypeActivated,
   source: elementsModel.$element,
   fn: (element) => {
+    const {
+      fontFamily,
+      letterSpacing,
+      fontStyle,
+      fontWeight,
+      fontSize,
+      x,
+      width,
+      text,
+    } = element as TextElement;
+    const curve = 70;
+    const radius = elementsLib.getRadiusByCurve({ curve });
+    const textWidth = textLib.getTextWidth({
+      fontSize,
+      text,
+      letterSpacing,
+      fontStyle,
+      fontWeight,
+      fontFamily,
+    });
+    const boundingHeight = elementsLib.getTextBoundingHeight({ radius, textWidth });
+    const boundingWidth = elementsLib.getTextBoundingWidth({ radius, textWidth })
+    const path = elementsLib.getPath({ radius, curve, textWidth });
+
     return {
       ...element,
-      curve: 70,
+      curve,
+      height: boundingHeight,
+      width: boundingWidth,
       type: elementsConfig.ELEMENT_TYPES.CURVED_TEXT,
+      path,
     } as CurvedTextElement;
   },
   target: [

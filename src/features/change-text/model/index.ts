@@ -107,10 +107,23 @@ sample({
       width,
       curve,
       text,
+      lineHeight,
     } = element as CurvedTextElement;
-    // TODO: Calculation of automatic height and width
+
+    const textHeight = textLib.getTextHeight({
+      fontSize,
+      text,
+      letterSpacing,
+      fontStyle,
+      fontWeight,
+      fontFamily,
+      width,
+      lineHeight,
+    });
+
     return {
       ...element,
+      height: textHeight,
     };
   },
   target: [
