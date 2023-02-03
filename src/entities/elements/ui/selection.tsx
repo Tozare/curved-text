@@ -7,6 +7,8 @@ type Props = {
   y: number,
   width: number,
   height: number,
+  onDoubleClick: () => void,
+  isInputModeOpened: boolean,
 }
 
 export const Selection = ({
@@ -14,12 +16,18 @@ export const Selection = ({
   y,
   width,
   height,
+  onDoubleClick,
+  isInputModeOpened,
 }: Props) => {
 
   const {
     primaryButton,
     primary,
   } = getThemeColors();
+
+  if (isInputModeOpened) {
+    return null;
+  }
 
   return (
     <Rect
@@ -31,6 +39,9 @@ export const Selection = ({
       strokeWidth={2}
       stroke={primary}
       strokeEnabled
+      onDblClick={() => {
+        onDoubleClick();
+      }}
     />
   )
 }

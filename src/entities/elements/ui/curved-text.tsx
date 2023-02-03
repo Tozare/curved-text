@@ -21,6 +21,7 @@ type Props = {
   lineHeight: number,
   curve: number,
   path: string,
+  isInputModeOpened: boolean,
 }
 export const CurvedText = ({
   id,
@@ -39,11 +40,13 @@ export const CurvedText = ({
   lineHeight,
   curve,
   path,
+  isInputModeOpened,
 }: Props) => {
   const deltaX = lib.getRadiusByCurve({ curve }) - (width/2);
   return (
     <>
       <TextPath
+        opacity={isInputModeOpened ? 0.6 : 1}
         id={id}
         fill={fill}
         width={width}
