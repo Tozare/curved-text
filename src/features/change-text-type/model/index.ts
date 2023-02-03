@@ -77,7 +77,7 @@ sample({
       text,
     } = element as TextElement;
     const curve = 50;
-    const radius = elementsLib.getRadiusByCurve({ curve });
+    const radius = elementsLib.getRadiusByCurve({ curve, fontSize });
     const textWidth = textLib.getTextWidth({
       fontSize,
       text,
@@ -86,9 +86,9 @@ sample({
       fontWeight,
       fontFamily,
     });
-    const boundingHeight = elementsLib.getTextBoundingHeight({ radius, textWidth });
-    const boundingWidth = elementsLib.getTextBoundingWidth({ radius, textWidth })
-    const path = elementsLib.getPath({ radius, curve, textWidth, height: boundingHeight });
+    const boundingHeight = elementsLib.getTextBoundingHeight({ radius, textWidth, curve });
+    const boundingWidth = elementsLib.getTextBoundingWidth({ radius, textWidth, curve })
+    const path = elementsLib.getPath({ radius, curve, textWidth, height: boundingHeight, fontSize });
 
     return {
       ...element,

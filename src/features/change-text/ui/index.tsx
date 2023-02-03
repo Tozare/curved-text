@@ -7,6 +7,7 @@ import TextareaAutosize from "react-textarea-autosize";
 import * as model from "../model";
 import { elementsModel } from "@src/entities/elements";
 import { getThemeColors } from '@src/shared/libs/get-theme-colors';
+import { Html } from 'react-konva-utils';
 
 
 type Props = {
@@ -69,36 +70,49 @@ export const View = ({
   }
 
   return (
-    <Box
-      // transformOrigin="left top"
-      position="absolute"
-      top={`${y - 5}px`}
-      left={`${x - 5}px`}
-      width={`${width + 10}px`}
-      height={`${height + 10}px`}
-      border={`2px solid ${primary}`}
+    <Html
+      divProps={{
+        style: {
+          position: 'absolute',
+          top: `${y - 5}px`,
+          left: `${x - 5}px`,
+          width: `${width + 10}px`,
+          height: `${height + 10}px`,
+          border: `2px solid ${primary}`,
+        },
+      }}
     >
-      <TextareaAutosize
-        ref={ref}
-        value={text}
-        onChange={(e) => onChange(e.target.value)}
-        style={{
-          width: `${width}px`,
-          outline: "none",
-          background: "transparent",
-          resize: "none",
-          padding: "0px",
-          margin: "0px",
-          lineHeight: `${lineHeight}px`,
-          fontFamily: `${fontFamily}px`,
-          letterSpacing: `${letterSpacing}px`,
-          fontSize: `${fontSize + 1}px`,
-          fontWeight: fontWeight,
-          fontStyle: fontStyle,
-          color: `${fill}`,
-        }}
-      />
-    </Box>
+      <Box
+        // transformOrigin="left top"
+        // position="absolute"
+        // top={`${y - 5}px`}
+        // left={`${x - 5}px`}
+        // width={`${width + 10}px`}
+        // height={`${height + 10}px`}
+        // border={`2px solid ${primary}`}
+      >
+        <TextareaAutosize
+          ref={ref}
+          value={text}
+          onChange={(e) => onChange(e.target.value)}
+          style={{
+            width: `${width}px`,
+            outline: "none",
+            background: "transparent",
+            resize: "none",
+            padding: "0px",
+            margin: "0px",
+            lineHeight: `${lineHeight}px`,
+            fontFamily: `${fontFamily}px`,
+            letterSpacing: `${letterSpacing}px`,
+            fontSize: `${fontSize + 1}px`,
+            fontWeight: fontWeight,
+            fontStyle: fontStyle,
+            color: `${fill}`,
+          }}
+        />
+      </Box>
+    </Html>
   );
 };
 

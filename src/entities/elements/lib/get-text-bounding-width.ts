@@ -3,9 +3,10 @@ import { rotationLib } from "@src/shared/libs";
 type GetTextBoundingWidth = {
   radius: number,
   textWidth: number,
+  curve: number,
 }
 
-export const getTextBoundingWidth = ({ radius, textWidth }: GetTextBoundingWidth) => {
+export const getTextBoundingWidth = ({ radius, textWidth, curve }: GetTextBoundingWidth) => {
   if (radius === 0) {
     return textWidth;
   }
@@ -18,5 +19,5 @@ export const getTextBoundingWidth = ({ radius, textWidth }: GetTextBoundingWidth
       segment: textWidth
     })/2);
   }
-  return res;
+  return res + (curve > 0 ? 14 : 0);
 }

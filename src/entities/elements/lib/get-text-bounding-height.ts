@@ -3,11 +3,12 @@ import { rotationLib } from "@src/shared/libs";
 type GetTextBoundingHeight = {
   radius: number,
   textWidth: number,
+  curve: number,
 }
 
-export const getTextBoundingHeight = ({ radius, textWidth }: GetTextBoundingHeight) => {
+export const getTextBoundingHeight = ({ radius, textWidth, curve }: GetTextBoundingHeight) => {
   if (radius === 0) {
-    return 13;
+    return 14;
   }
   let res = 0;
   if (textWidth >= 2 * Math.PI * radius) {
@@ -23,5 +24,5 @@ export const getTextBoundingHeight = ({ radius, textWidth }: GetTextBoundingHeig
       segment: textWidth
     })/2);
   }
-  return res;
+  return res + (curve > 0 ? 14 : 0);
 }

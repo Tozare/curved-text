@@ -5,9 +5,10 @@ type GetPath = {
   radius: number,
   curve: number,
   height: number,
+  fontSize: number,
 }
 
-export const getPath = ({ radius, textWidth, curve, height }: GetPath) => {
+export const getPath = ({ radius, textWidth, curve, height, fontSize }: GetPath) => {
   if (curve === 0) {
     const path = dataPathLib.getLineDataPath({
       width: textWidth,
@@ -24,6 +25,7 @@ export const getPath = ({ radius, textWidth, curve, height }: GetPath) => {
     y: radius,
     r: radius,
     deg: rotationDeg,
+    fontSize,
     isTopArcStart: curve > 0,
   });
   return path;

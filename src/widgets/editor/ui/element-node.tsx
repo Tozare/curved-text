@@ -5,9 +5,10 @@ import { elementsConfig, TextNode, CurvedText } from "@src/entities/elements";
 type Props = {
   element: Element,
   isInputModeOpened: boolean,
+  onDoubleClick: () => void,
 }
 
-export const ElementNode = ({ element, isInputModeOpened }: Props) => {
+export const ElementNode = ({ element, isInputModeOpened, onDoubleClick }: Props) => {
   if (element.type === elementsConfig.ELEMENT_TYPES.TEXT) {
 
     const {
@@ -57,6 +58,7 @@ export const ElementNode = ({ element, isInputModeOpened }: Props) => {
         curve={curve}
         path={path}
         isInputModeOpened={isInputModeOpened}
+        onDoubleClick={onDoubleClick}
       />
     );
   }

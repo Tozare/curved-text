@@ -3,7 +3,7 @@ type GetLineDataPath = {
 }
 export const getLineDataPath = ({ width }: GetLineDataPath) => {
   return `
-    M ${-width/2} ${0}
-    L ${width/2} ${0}
+    M ${-width/2} ${7}
+    L ${width/2} ${7}
   `;
 }

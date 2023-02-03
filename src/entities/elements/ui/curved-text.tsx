@@ -3,6 +3,7 @@ import { TextPath, Path } from 'react-konva';
 import { dataPathLib, textLib, rotationLib } from "@src/shared/libs";
 import * as elementsConfig from "../config";
 import * as lib from "../lib";
+import { Html } from 'react-konva-utils';
 
 type Props = {
   id: string,
@@ -22,6 +23,7 @@ type Props = {
   curve: number,
   path: string,
   isInputModeOpened: boolean,
+  onDoubleClick: () => void,
 }
 export const CurvedText = ({
   id,
@@ -41,38 +43,55 @@ export const CurvedText = ({
   curve,
   path,
   isInputModeOpened,
+  onDoubleClick,
 }: Props) => {
-  const deltaX = lib.getRadiusByCurve({ curve }) - (width/2);
-
+  const deltaX = lib.getRadiusByCurve({ curve, fontSize }) - (width/2);
+  const w = lib.getRadiusByCurve({ curve, fontSize }) * 2;
+  const difRadius = (curve < 0 ? fontSize : 0);
+  // const leftDif = (curve > 0 ? fontSize/2 : (curve === 0 ? -100));
   return (
     <>
-      <TextPath
-        opacity={isInputModeOpened ? 0.6 : 1}
-        id={id}
-        fill={fill}
-        // width={width}
-        // height={height}
-        x={x - deltaX}
-        y={y}
-        text={text}
-        data={path}
-        fontStyle={fontStyle}
-        fontWeight={fontWeight}
-        fontSize={fontSize}
-        letterSpacing={letterSpacing}
-        lineHeight={lineHeight}
-        fontFamily={fontFamily}
-      />
-      {/*<Path*/}
-      {/*  id={"path-test-view"}*/}
-      {/*  stroke="black"*/}
-      {/*  strokeWidth={2}*/}
-      {/*  width={width}*/}
-      {/*  height={height}*/}
-      {/*  x={x - deltaX}*/}
-      {/*  y={y}*/}
-      {/*  data={path}*/}
-      {/*/>*/}
+      <Html
+        divProps={{
+          style: {
+            position: 'absolute',
+            width: `${width}px`,
+            height: `${height}px`,
+            top: `${y + (curve < 0 ? 0 : 0)}px`,
+            left: `${x - deltaX - (curve > 0 ? fontSize/2 : 0)}px`,
+            opacity: isInputModeOpened ? 0.5 : 1,
+          },
+        }}
+      >
+        <div
+          style={{ width: "100%", height: "100%" }}
+          onDoubleClick={() => {
+            onDoubleClick()
+          }}
+        >
+          <svg width={w+fontSize + difRadius + (curve === 0 ? 10000 : 0)} height={w+fontSize + difRadius} viewBox={`0 0 ${w+fontSize + difRadius + (curve === 0 ? 10000 : 0)} ${w+fontSize + difRadius}`} xmlns="http://www.w3.org/2000/svg">
+            <path
+              id="curved-text-path"
+              fill="none"
+              d={path}
+            />
+            <text>
+              <textPath
+                href="#curved-text-path"
+                color={fill}
+                spacing={letterSpacing}
+                fontStyle={fontStyle}
+                fontSize={`${fontSize}px`}
+                fontWeight={`${fontWeight}px`}
+                letterSpacing={`${letterSpacing}px`}
+                fontFamily={fontFamily}
+              >
+                {text}
+              </textPath>
+            </text>
+          </svg>
+        </div>
+      </Html>
     </>
   )
 }

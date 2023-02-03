@@ -49,7 +49,9 @@ const EditorView = ({ element, onOpenInputMode, isInputModeOpened }: Props) => {
       >
         <Stage width={600} height={720}>
           <Layer>
-            <ElementNode element={element} isInputModeOpened={isInputModeOpened} />
+            <ElementNode element={element} isInputModeOpened={isInputModeOpened} onDoubleClick={onOpenInputMode}/>
+          </Layer>
+          <Layer>
             <Selection
               width={width}
               height={height}
@@ -58,23 +60,23 @@ const EditorView = ({ element, onOpenInputMode, isInputModeOpened }: Props) => {
               onDoubleClick={() => onOpenInputMode()}
               isInputModeOpened={isInputModeOpened}
             />
+            <ChangeText
+              fontStyle={element.fontStyle}
+              lineHeight={element.lineHeight}
+              fontFamily={element.fontFamily}
+              fontSize={element.fontSize}
+              textAlign={element.textAlign}
+              fill={element.fill}
+              width={element.width}
+              height={element.height}
+              letterSpacing={element.letterSpacing}
+              x={element.x}
+              y={element.y}
+              fontWeight={element.fontWeight}
+            />
           </Layer>
         </Stage>
       </Box>
-      <ChangeText
-        fontStyle={element.fontStyle}
-        lineHeight={element.lineHeight}
-        fontFamily={element.fontFamily}
-        fontSize={element.fontSize}
-        textAlign={element.textAlign}
-        fill={element.fill}
-        width={element.width}
-        height={element.height}
-        letterSpacing={element.letterSpacing}
-        x={element.x}
-        y={element.y}
-        fontWeight={element.fontWeight}
-      />
     </Box>
   )
 }

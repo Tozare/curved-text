@@ -61,7 +61,7 @@ export const DEFAULT_CURVE = 0;
 export const STEP = 1;
 
 export const SELECTION_ID = "SELECTION_ID";
-
+// export const LETTER_WIDTH
 export const DEFAULT_TEXT_ELEMENT: TextElement = {
   id: "curvedText",
   type: ELEMENT_TYPES.TEXT,
@@ -72,7 +72,7 @@ export const DEFAULT_TEXT_ELEMENT: TextElement = {
   fontSize: 14,
   fill: "#1E1E1E",
   letterSpacing: 0.6,
-  lineHeight: 16,
+  lineHeight: 14,
   textAlign: TEXT_ALIGN_TYPES.LEFT,
   fontStyle: TEXT_FONT_STYLES_TYPES.NORMAL,
   text: "design your curved text with ease",
