@@ -7,6 +7,12 @@ type GetPath = {
 }
 
 export const getPath = ({ radius, textWidth, curve }: GetPath) => {
+  if (curve === 0) {
+    const path = dataPathLib.getLineDataPath({
+      width: textWidth,
+    });
+    return path;
+  }
   const rotationDeg = rotationLib.getCircleCenterRotationDeg({
     valueLength: textWidth,
     radius: radius,

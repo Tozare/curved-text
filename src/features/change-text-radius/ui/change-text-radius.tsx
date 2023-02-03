@@ -71,6 +71,7 @@ const ChangeTextTypeSwitcherView = ({
             onChange={(num) => {
               onMoveSlider(num);
             }}
+            value={curve}
           >
             <SliderMark value={elementsConfig.MIN_CURVE}>
               {elementsConfig.MIN_CURVE}
@@ -80,6 +81,9 @@ const ChangeTextTypeSwitcherView = ({
             </SliderMark>
             <SliderMark value={elementsConfig.MAX_CURVE}>
               {elementsConfig.MAX_CURVE}
+            </SliderMark>
+            <SliderMark value={curve}>
+              {curve}
             </SliderMark>
             <SliderTrack bg='red.100' width="20px">
               {/*<SliderFilledTrack bg='tomato' width={`20px`}/>*/}

@@ -43,6 +43,9 @@ export const CurvedText = ({
   isInputModeOpened,
 }: Props) => {
   const deltaX = lib.getRadiusByCurve({ curve }) - (width/2);
+
+  console.log(path);
+
   return (
     <>
       <TextPath

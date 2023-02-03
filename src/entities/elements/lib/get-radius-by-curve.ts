@@ -5,5 +5,6 @@ type Props = {
 }
 
 export const getRadiusByCurve = ({ curve }: Props) => {
+  if (curve === 0) return 0;
   return (1/(curve * curve)) * MAX_RADIUS + 10;
 }

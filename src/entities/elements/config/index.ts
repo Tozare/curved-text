@@ -75,13 +75,13 @@ export const DEFAULT_TEXT_ELEMENT: CurvedTextElement = {
   lineHeight: 16,
   textAlign: TEXT_ALIGN_TYPES.LEFT,
   fontStyle: TEXT_FONT_STYLES_TYPES.NORMAL,
-  text: "Type Here... long text",
+  text: "Your Heading here",
   path: "M 72.5 72.5\n" +
     "    m -61.27534460371188 -38.75025346622082\n" +
     "    a 72.5 72.5 0 1,1 122.55068920742376, 77.50050693244164\n" +
     "    a 72.5 72.5 0 1,1 -122.55068920742376, -77.50050693244164",
-  x: 300,
-  y: 300,
+  x: 150,
+  y: 150,
   radius: 50,
   curve: 40,
 } as const;

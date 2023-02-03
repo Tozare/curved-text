@@ -6,6 +6,9 @@ type GetTextBoundingWidth = {
 }
 
 export const getTextBoundingWidth = ({ radius, textWidth }: GetTextBoundingWidth) => {
+  if (radius === 0) {
+    return textWidth;
+  }
   let res = 0;
   if (textWidth >= Math.PI * radius) {
     res = radius * 2;
