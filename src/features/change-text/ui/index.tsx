@@ -25,6 +25,7 @@ type Props = {
   fontWeight: number,
   onInputModeClose: () => void,
   isInputModeOpened: boolean,
+  fontStyle: string,
 }
 
 export const View = ({
@@ -34,6 +35,7 @@ export const View = ({
   fontSize,
   letterSpacing,
   textAlign,
+  fontStyle,
   width,
   height,
   x,
@@ -90,8 +92,9 @@ export const View = ({
           lineHeight: `${lineHeight}px`,
           fontFamily: `${fontFamily}px`,
           letterSpacing: `${letterSpacing}px`,
-          fontSize: `${fontSize}px`,
+          fontSize: `${fontSize + 1}px`,
           fontWeight: fontWeight,
+          fontStyle: fontStyle,
           color: `${fill}`,
         }}
       />

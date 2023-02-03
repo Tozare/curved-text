@@ -62,6 +62,7 @@ const EditorView = ({ element, onOpenInputMode, isInputModeOpened }: Props) => {
         </Stage>
       </Box>
       <ChangeText
+        fontStyle={element.fontStyle}
         lineHeight={element.lineHeight}
         fontFamily={element.fontFamily}
         fontSize={element.fontSize}

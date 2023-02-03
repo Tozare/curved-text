@@ -18,7 +18,7 @@ export const getTextWidth = ({
   const textElement = document.createElement("span");
   document.body.appendChild(textElement);
   textElement.innerHTML = text;
-  textElement.style.fontSize = `${fontSize}px`;
+  textElement.style.fontSize = `${fontSize + 1}px`;
   textElement.style.fontWeight = `${fontWeight}`;
   textElement.style.fontFamily = fontFamily;
   textElement.style.fontStyle = fontStyle;

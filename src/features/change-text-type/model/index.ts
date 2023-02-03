@@ -1,7 +1,7 @@
 import { createEvent, guard, restore, sample } from 'effector';
 import { Values } from '@src/shared/typings/object-values';
 import { elementsConfig, elementsModel, CurvedTextElement, TextElement, elementsLib } from '@src/entities/elements';
-import { $element } from '@src/entities/elements/model';
+import { $element, curveChanged } from '@src/entities/elements/model';
 import { textLib } from "@src/shared/libs";
 
 export const textTypeChanged = createEvent<Values<typeof elementsConfig.ELEMENT_TYPES> | null>();
@@ -76,7 +76,7 @@ sample({
       width,
       text,
     } = element as TextElement;
-    const curve = 70;
+    const curve = 50;
     const radius = elementsLib.getRadiusByCurve({ curve });
     const textWidth = textLib.getTextWidth({
       fontSize,
@@ -101,6 +101,7 @@ sample({
   },
   target: [
     elementsModel.elementChanged,
+    curveChanged.prepend<{ curve: number}>(({ curve }) => curve),
     textTypeChanged.prepend(() => elementsConfig.ELEMENT_TYPES.CURVED_TEXT),
   ]
 

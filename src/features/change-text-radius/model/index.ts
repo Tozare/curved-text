@@ -11,7 +11,6 @@ export const $type = elementsModel.$element.map((element) => element.type);
 
 export const curveSliderMoved = createEvent<number>();
 
-
 sample({
   clock: curveSliderMoved,
   source: elementsModel.$element,
@@ -55,7 +54,6 @@ sample({
 });
 
 sample({
-  clock: curveSliderMoved,
+  clock: [curveSliderMoved, elementsModel.curveChanged],
   target: curveChanged,
 });
-
