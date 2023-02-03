@@ -44,16 +44,14 @@ export const CurvedText = ({
 }: Props) => {
   const deltaX = lib.getRadiusByCurve({ curve }) - (width/2);
 
-  console.log(path);
-
   return (
     <>
       <TextPath
         opacity={isInputModeOpened ? 0.6 : 1}
         id={id}
         fill={fill}
-        width={width}
-        height={height}
+        // width={width}
+        // height={height}
         x={x - deltaX}
         y={y}
         text={text}
@@ -65,6 +63,16 @@ export const CurvedText = ({
         lineHeight={lineHeight}
         fontFamily={fontFamily}
       />
+      {/*<Path*/}
+      {/*  id={"path-test-view"}*/}
+      {/*  stroke="black"*/}
+      {/*  strokeWidth={2}*/}
+      {/*  width={width}*/}
+      {/*  height={height}*/}
+      {/*  x={x - deltaX}*/}
+      {/*  y={y}*/}
+      {/*  data={path}*/}
+      {/*/>*/}
     </>
   )
 }

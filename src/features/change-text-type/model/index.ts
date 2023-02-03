@@ -88,7 +88,7 @@ sample({
     });
     const boundingHeight = elementsLib.getTextBoundingHeight({ radius, textWidth });
     const boundingWidth = elementsLib.getTextBoundingWidth({ radius, textWidth })
-    const path = elementsLib.getPath({ radius, curve, textWidth });
+    const path = elementsLib.getPath({ radius, curve, textWidth, height: boundingHeight });
 
     return {
       ...element,

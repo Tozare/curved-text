@@ -67,7 +67,7 @@ export const View = ({
   if (!isInputModeOpened) {
     return null;
   }
-  console.log({y,x});
+
   return (
     <Box
       // transformOrigin="left top"
