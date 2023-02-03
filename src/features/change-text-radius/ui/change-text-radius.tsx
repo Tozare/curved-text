@@ -84,7 +84,7 @@ const ChangeTextTypeSwitcherView = ({
             <SliderTrack bg='red.100' width="20px">
               {/*<SliderFilledTrack bg='tomato' width={`20px`}/>*/}
             </SliderTrack>
-            <SliderThumb boxSize={6}>
+            <SliderThumb boxSize={3}>
             </SliderThumb>
           </Slider>
         </Box>

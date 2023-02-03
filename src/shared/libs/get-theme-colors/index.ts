@@ -5,6 +5,7 @@ export const getThemeColors = () => {
     border: "#E8ECF0",
     subIcon: "#AAB2BB",
     primaryIcon: "#2198ED",
+    primary: "#2198ED",
     primaryButton: "#27AE60",
     primaryButtonColor: "#FFFFFF",
     background: "#FFFFFF",

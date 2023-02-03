@@ -37,6 +37,7 @@ export interface CurvedTextElement
   type: typeof ELEMENT_TYPES.CURVED_TEXT,
   radius: number,
   curve: number,
+  path: string,
 }
 
 export type Element = TextElement | CurvedTextElement;

@@ -16,11 +16,6 @@ const ChangeTextTypeSwitcherView = ({
   onSwitchType,
 }: Props) => {
 
-
-  console.log({
-    activeType,
-  })
-
   const {
     primaryButton,
     primaryText,

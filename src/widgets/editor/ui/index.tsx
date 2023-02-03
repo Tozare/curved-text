@@ -31,6 +31,7 @@ const EditorView = ({ element }: Props) => {
     fontStyle,
     radius,
     curve,
+    path,
   } = element as CurvedTextElement;
   return (
     <Box
@@ -59,6 +60,7 @@ const EditorView = ({ element }: Props) => {
             letterSpacing={letterSpacing}
             radius={radius}
             curve={curve}
+            path={path}
           />
           <Selection
             width={width}

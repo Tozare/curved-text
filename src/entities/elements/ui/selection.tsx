@@ -18,6 +18,7 @@ export const Selection = ({
 
   const {
     primaryButton,
+    primary,
   } = getThemeColors();
 
   return (
@@ -27,8 +28,8 @@ export const Selection = ({
       y={y - 5}
       width={width + 10}
       height={height + 10}
-      strokeWidth={1}
-      stroke={primaryButton}
+      strokeWidth={2}
+      stroke={primary}
       strokeEnabled
     />
   )
