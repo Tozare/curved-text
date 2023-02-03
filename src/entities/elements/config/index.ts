@@ -1,5 +1,5 @@
 import { Values } from '@src/shared/typings/object-values';
-import { CurvedTextElement } from '@src/entities/elements/typings';
+import { CurvedTextElement, TextElement } from '@src/entities/elements/typings';
 
 export const ELEMENT_TYPES = {
   TEXT: "TEXT",
@@ -62,11 +62,11 @@ export const STEP = 1;
 
 export const SELECTION_ID = "SELECTION_ID";
 
-export const DEFAULT_TEXT_ELEMENT: CurvedTextElement = {
+export const DEFAULT_TEXT_ELEMENT: TextElement = {
   id: "curvedText",
-  type: ELEMENT_TYPES.CURVED_TEXT,
+  type: ELEMENT_TYPES.TEXT,
   width: 145,
-  height: 145,
+  height: 32,
   fontFamily: "Arial",
   fontWeight: 500,
   fontSize: 14,
@@ -75,13 +75,13 @@ export const DEFAULT_TEXT_ELEMENT: CurvedTextElement = {
   lineHeight: 16,
   textAlign: TEXT_ALIGN_TYPES.LEFT,
   fontStyle: TEXT_FONT_STYLES_TYPES.NORMAL,
-  text: "Your Heading here",
-  path: "M 72.5 72.5\n" +
-    "    m -61.27534460371188 -38.75025346622082\n" +
-    "    a 72.5 72.5 0 1,1 122.55068920742376, 77.50050693244164\n" +
-    "    a 72.5 72.5 0 1,1 -122.55068920742376, -77.50050693244164",
+  text: "design your curved text with ease",
+  // path: "M 72.5 72.5\n" +
+  //   "    m -61.27534460371188 -38.75025346622082\n" +
+  //   "    a 72.5 72.5 0 1,1 122.55068920742376, 77.50050693244164\n" +
+  //   "    a 72.5 72.5 0 1,1 -122.55068920742376, -77.50050693244164",
   x: 150,
   y: 150,
-  radius: 50,
-  curve: 40,
+  // radius: 50,
+  // curve: 40,
 } as const;

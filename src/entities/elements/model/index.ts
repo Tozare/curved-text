@@ -12,4 +12,3 @@ $element
 elementChanged(DEFAULT_TEXT_ELEMENT);
 
 export const curveChanged = createEvent<number>();
-

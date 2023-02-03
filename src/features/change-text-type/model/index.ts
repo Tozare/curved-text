@@ -5,7 +5,7 @@ import { $element, curveChanged } from '@src/entities/elements/model';
 import { textLib } from "@src/shared/libs";
 
 export const textTypeChanged = createEvent<Values<typeof elementsConfig.ELEMENT_TYPES> | null>();
-export const $textType = restore(textTypeChanged, elementsConfig.ELEMENT_TYPES.CURVED_TEXT);
+export const $textType = restore(textTypeChanged, elementsConfig.ELEMENT_TYPES.TEXT);
 
 export const textTypeSwitched = createEvent<Values<typeof elementsConfig.ELEMENT_TYPES>>();
 
