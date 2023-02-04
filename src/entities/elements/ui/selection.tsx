@@ -32,11 +32,11 @@ export const Selection = ({
   return (
     <Rect
       id={config.SELECTION_ID}
-      x={x - 5}
-      y={y - 5}
-      width={width + 10}
-      height={height + 10}
-      strokeWidth={2}
+      x={x}
+      y={y}
+      width={width}
+      height={height}
+      strokeWidth={1}
       stroke={primary}
       strokeEnabled
       onDblClick={() => {
