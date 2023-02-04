@@ -24,12 +24,16 @@ type Props = {
   curve: number,
   onMoveSlider: (value: number) => void,
   type: Values<typeof elementsConfig.ELEMENT_TYPES>,
+  onStartDragging: () => void,
+  onFinishDragging: () => void,
 }
 
 const ChangeTextTypeSwitcherView = ({
   onMoveSlider,
   curve,
   type,
+  onFinishDragging,
+  onStartDragging,
 }: Props) => {
 
   const {
@@ -52,7 +56,7 @@ const ChangeTextTypeSwitcherView = ({
         fontSize="12px"
         lineHeight="14px"
       >
-        Radius
+        Curve
       </Text>
       <Box
         marginBottom="10px"
@@ -72,6 +76,8 @@ const ChangeTextTypeSwitcherView = ({
               onMoveSlider(num);
             }}
             value={curve}
+            onChangeStart={() => onStartDragging()}
+            onChangeEnd={() => onFinishDragging()}
           >
             <SliderMark value={elementsConfig.MIN_CURVE}>
               {elementsConfig.MIN_CURVE}
@@ -85,7 +91,11 @@ const ChangeTextTypeSwitcherView = ({
             <SliderMark value={curve}>
               {curve}
             </SliderMark>
-            <SliderTrack bg='red.100' width="20px">
+            <SliderTrack bg='red.100' width="20px"   onMouseDown={() => {
+              console.log('sdfsdf')
+              onStartDragging();
+            }}
+                         onMouseUp={() => onFinishDragging()}>
               {/*<SliderFilledTrack bg='tomato' width={`20px`}/>*/}
             </SliderTrack>
             <SliderThumb boxSize={3}>
@@ -103,5 +113,7 @@ export const ChangeTextRadius = reflect({
     type: model.$type,
     curve: model.$curve,
     onMoveSlider: model.curveSliderMoved,
+    onFinishDragging: model.curvingChangeFinished,
+    onStartDragging: model.curvingChangeStarted,
   },
 });

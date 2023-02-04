@@ -6,6 +6,7 @@ import { Stage, Layer, Rect, Text, Circle, Line, TextPath, Path } from 'react-ko
 import { ElementNode } from "./element-node";
 import { elementsModel, CurvedText, Element, CurvedTextElement, Selection } from '@src/entities/elements';
 import { ChangeText, changeTextModel } from "@src/features/change-text";
+import { RadiusPreview } from '@src/features/change-text-radius';
 type Props = {
   element: Element,
   onOpenInputMode: () => void,
@@ -52,6 +53,15 @@ const EditorView = ({ element, onOpenInputMode, isInputModeOpened }: Props) => {
             <ElementNode element={element} isInputModeOpened={isInputModeOpened} onDoubleClick={onOpenInputMode}/>
           </Layer>
           <Layer>
+            <RadiusPreview
+              width={width}
+              height={height}
+              fontSize={fontSize}
+              curve={curve}
+              x={x}
+              y={y}
+              path={path}
+            />
             <Selection
               width={width}
               height={height}

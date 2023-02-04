@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { TextPath, Path } from 'react-konva';
+import { TextPath, Path, Circle } from 'react-konva';
 import { dataPathLib, textLib, rotationLib } from "@src/shared/libs";
 import * as elementsConfig from "../config";
 import * as lib from "../lib";
@@ -48,15 +48,6 @@ export const CurvedText = ({
   const deltaX = lib.getRadiusByCurve({ curve, fontSize }) - (width/2);
   const w = lib.getRadiusByCurve({ curve, fontSize }) * 2;
   const difRadius = (curve < 0 ? fontSize : 0);
-  // const leftDif = (curve > 0 ? fontSize/2 : (curve === 0 ? -100));
-  // const textWidth = textLib.getTextWidth({
-  //   fontSize,
-  //   text,
-  //   letterSpacing,
-  //   fontStyle,
-  //   fontWeight,
-  //   fontFamily,
-  // })
   return (
     <>
       <Html
