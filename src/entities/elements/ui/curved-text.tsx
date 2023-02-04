@@ -49,6 +49,14 @@ export const CurvedText = ({
   const w = lib.getRadiusByCurve({ curve, fontSize }) * 2;
   const difRadius = (curve < 0 ? fontSize : 0);
   // const leftDif = (curve > 0 ? fontSize/2 : (curve === 0 ? -100));
+  // const textWidth = textLib.getTextWidth({
+  //   fontSize,
+  //   text,
+  //   letterSpacing,
+  //   fontStyle,
+  //   fontWeight,
+  //   fontFamily,
+  // })
   return (
     <>
       <Html
@@ -58,8 +66,12 @@ export const CurvedText = ({
             width: `${width}px`,
             height: `${height}px`,
             top: `${y + (curve < 0 ? 0 : 0)}px`,
-            left: `${x - deltaX - (curve > 0 ? fontSize/2 : 0)}px`,
+            //left: `${x - deltaX - (curve > 0 ? fontSize/2 : 0)}px`,
+            left: `${x - (curve === 0 ? 0 : deltaX) - (curve > 0 ? fontSize/2 : 0)}px`,
+            // left: `${x}px`,
             opacity: isInputModeOpened ? 0.5 : 1,
+            // backgroundColor: "blue",
+            // opacity: 0.5,
           },
         }}
       >
