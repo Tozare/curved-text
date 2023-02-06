@@ -88,7 +88,7 @@ export const CurvedText = ({
             //left: `${x - deltaX - (curve > 0 ? fontSize/2 : 0)}px`,
             left: `${x - (curve === 0 ? 0 : deltaX) - (curve > 0 ? fontSize/2 : 0)}px`,
             // left: `${x}px`,
-            opacity: isInputModeOpened ? 0.4 : 1,
+            opacity: isInputModeOpened ? 0.2 : 1,
             // backgroundColor: "blue",
             // opacity: 0.5,
           },

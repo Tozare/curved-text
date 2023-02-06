@@ -47,19 +47,6 @@ export const View = ({
   isInputModeOpened,
   text,
 }: Props) => {
-  const ref = useRef<HTMLTextAreaElement>(null);
-
-  useOutsideClick({
-    ref,
-    handler: onInputModeClose,
-  });
-
-  useEffect(() => {
-    if (ref.current) {
-      const textarea = ref.current;
-      textarea.focus();
-    }
-  }, [ref]);
 
   const {
     primary,
@@ -68,17 +55,32 @@ export const View = ({
   if (!isInputModeOpened) {
     return null;
   }
+  const ref = useRef<HTMLTextAreaElement>(null);
+
+  useOutsideClick({
+    ref,
+    handler: onInputModeClose,
+  });
+
+  useEffect(() => {
+    console.log(ref.current);
+    if (ref.current) {
+      const textarea = ref.current;
+      textarea.focus();
+    }
+  }, [ref]);
 
   return (
     <Html
       divProps={{
         style: {
           position: 'absolute',
-          top: `${y - 5}px`,
-          left: `${x - 5}px`,
-          width: `${width + 10}px`,
-          height: `${height + 10}px`,
-          border: `2px solid ${primary}`,
+          top: `${y}px`,
+          left: `${x}px`,
+          width: `${width}px`,
+          height: `${height}px`,
+          boxSizing: "content-box",
+          border: `1px solid ${primary}`,
         },
       }}
     >
@@ -94,6 +96,9 @@ export const View = ({
         <TextareaAutosize
           ref={ref}
           value={text}
+          onFocus={(e) => {
+            e.target.select();
+          }}
           onChange={(e) => onChange(e.target.value)}
           style={{
             width: `${width}px`,
