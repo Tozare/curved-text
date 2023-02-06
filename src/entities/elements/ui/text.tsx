@@ -2,6 +2,8 @@ import React, { useRef } from 'react';
 import { ELEMENT_TYPES, TEXT_ALIGN_TYPES } from '@src/entities/elements/config';
 import { Values } from '@src/shared/typings/object-values';
 import { Text } from "react-konva";
+import Konva from 'konva';
+import KonvaEventObject = Konva.KonvaEventObject;
 // import "./auto-resize-text-area.css";
 
 type Props = {
@@ -41,7 +43,7 @@ export const TextNode = ({
 }: Props) => {
   return (
     <Text
-      opacity={isInputModeOpened ? 0.6 : 1}
+      opacity={isInputModeOpened ? 0 : 1}
       name="NODE"
       id={id}
       x={x}

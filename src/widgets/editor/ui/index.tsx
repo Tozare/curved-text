@@ -7,13 +7,20 @@ import { ElementNode } from "./element-node";
 import { elementsModel, CurvedText, Element, CurvedTextElement, Selection } from '@src/entities/elements';
 import { ChangeText, changeTextModel } from "@src/features/change-text";
 import { RadiusPreview } from '@src/features/change-text-radius';
+import { moveElementModel } from "@src/features/move-element";
+import Konva from 'konva';
+import KonvaEventObject = Konva.KonvaEventObject;
 type Props = {
   element: Element,
   onOpenInputMode: () => void,
   isInputModeOpened: boolean,
+  onMove: (data: { x: number, y: number }) => void,
+  isCurveTextMoving: boolean,
+  curveTextMovingStarted: () => void,
+  curveTextMovingFinished: () => void,
 }
 
-const EditorView = ({ element, onOpenInputMode, isInputModeOpened }: Props) => {
+const EditorView = ({ element, onOpenInputMode, isInputModeOpened, onMove, isCurveTextMoving, curveTextMovingFinished, curveTextMovingStarted }: Props) => {
 
   const {
     background,
@@ -47,10 +54,27 @@ const EditorView = ({ element, onOpenInputMode, isInputModeOpened }: Props) => {
     >
       <Box
         position="absolute"
+        width={"600px"} height={"720px"}
+        overflow="hidden"
+        // onPointerUp={() => {
+        //   curveTextMovingFinished();
+        // }}
+        // onPointerMove={(e) => {
+        //   if (isCurveTextMoving) {
+        //     console.log("isCurveTextMoving");
+        //     // console.log(e.movementX)
+        //     onMove({ x: x + e.movementX, y: y + e.movementY })
+        //   }
+        //   // console.log(e);
+        // }}
       >
         <Stage width={600} height={720}>
           <Layer>
-            <ElementNode element={element} isInputModeOpened={isInputModeOpened} onDoubleClick={onOpenInputMode}/>
+            <ElementNode
+              isCurveTextMoving={isCurveTextMoving}
+              curveTextMovingStarted={curveTextMovingStarted}
+              curveTextMovingFinished={curveTextMovingFinished}
+              onMove={onMove} element={element} isInputModeOpened={isInputModeOpened} onDoubleClick={onOpenInputMode}/>
           </Layer>
           <Layer>
             <RadiusPreview
@@ -69,6 +93,7 @@ const EditorView = ({ element, onOpenInputMode, isInputModeOpened }: Props) => {
               y={y}
               onDoubleClick={() => onOpenInputMode()}
               isInputModeOpened={isInputModeOpened}
+              onMove={onMove}
             />
             <ChangeText
               fontStyle={element.fontStyle}
@@ -97,5 +122,9 @@ export const Editor = reflect({
     element: elementsModel.$element,
     onOpenInputMode: changeTextModel.inputModeOpened,
     isInputModeOpened: changeTextModel.$isInputModeOpened,
+    onMove: moveElementModel.elementDragged,
+    isCurveTextMoving: moveElementModel.$isCurveTextMoving,
+    curveTextMovingFinished: moveElementModel.curveTextMovingFinished,
+    curveTextMovingStarted: moveElementModel.curveTextMovingStarted,
   },
 });

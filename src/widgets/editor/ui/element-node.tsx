@@ -1,14 +1,20 @@
 import React from "react";
 import type { Element } from "@src/entities/elements";
 import { elementsConfig, TextNode, CurvedText } from "@src/entities/elements";
+import Konva from 'konva';
+import KonvaEventObject = Konva.KonvaEventObject;
 
 type Props = {
   element: Element,
   isInputModeOpened: boolean,
   onDoubleClick: () => void,
+  onMove: (data: { x: number, y: number }) => void,
+  isCurveTextMoving: boolean,
+  curveTextMovingStarted: () => void,
+  curveTextMovingFinished: () => void,
 }
 
-export const ElementNode = ({ element, isInputModeOpened, onDoubleClick }: Props) => {
+export const ElementNode = ({ element, isInputModeOpened, onDoubleClick, onMove, curveTextMovingFinished, curveTextMovingStarted, isCurveTextMoving }: Props) => {
   if (element.type === elementsConfig.ELEMENT_TYPES.TEXT) {
 
     const {
@@ -59,6 +65,10 @@ export const ElementNode = ({ element, isInputModeOpened, onDoubleClick }: Props
         path={path}
         isInputModeOpened={isInputModeOpened}
         onDoubleClick={onDoubleClick}
+        onMove={onMove}
+        isCurveTextMoving={isCurveTextMoving}
+        curveTextMovingStarted={curveTextMovingStarted}
+        curveTextMovingFinished={curveTextMovingFinished}
       />
     );
   }

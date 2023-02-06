@@ -92,7 +92,6 @@ const ChangeTextTypeSwitcherView = ({
               {curve}
             </SliderMark>
             <SliderTrack bg='red.100' width="20px"   onMouseDown={() => {
-              console.log('sdfsdf')
               onStartDragging();
             }}
                          onMouseUp={() => onFinishDragging()}>

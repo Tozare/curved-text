@@ -3,6 +3,7 @@ import { Values } from '@src/shared/typings/object-values';
 import { elementsConfig, elementsLib, elementsModel, CurvedTextElement, TextElement } from '@src/entities/elements';
 import { rotationLib, textLib } from "@src/shared/libs";
 import { getPath } from '@src/entities/elements/lib';
+import * as lib from '@src/entities/elements/lib';
 
 export const curveChanged = createEvent<number>();
 export const $curve = restore(curveChanged, 50);
@@ -47,12 +48,11 @@ sample({
     const boundingWidth = elementsLib.getTextBoundingWidth({ radius, textWidth, curve })
 
     const path = elementsLib.getPath({ radius, curve, textWidth, height: boundingHeight, fontSize });
-
     return {
       ...element,
       width: boundingWidth,
       height: boundingHeight,
-      path,
+      path: path,
       curve,
     };
   },

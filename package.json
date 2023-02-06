@@ -60,6 +60,7 @@
     "react-konva": "^18.2.3",
     "react-konva-utils": "^0.3.2",
     "react-scripts": "^5.0.1",
-    "react-textarea-autosize": "^8.4.0"
+    "react-textarea-autosize": "^8.4.0",
+    "use-image": "^1.1.0"
   }
 }

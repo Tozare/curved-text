@@ -2,6 +2,8 @@ import React from "react";
 import { Rect } from 'react-konva';
 import * as config from "../config";
 import { getThemeColors } from '@src/shared/libs/get-theme-colors';
+import Konva from 'konva';
+import KonvaEventObject = Konva.KonvaEventObject;
 type Props = {
   x: number,
   y: number,
@@ -9,6 +11,7 @@ type Props = {
   height: number,
   onDoubleClick: () => void,
   isInputModeOpened: boolean,
+  onMove: (e: { x: number, y: number }) => void,
 }
 
 export const Selection = ({
@@ -18,6 +21,7 @@ export const Selection = ({
   height,
   onDoubleClick,
   isInputModeOpened,
+  onMove,
 }: Props) => {
 
   const {
@@ -41,6 +45,10 @@ export const Selection = ({
       strokeEnabled
       onDblClick={() => {
         onDoubleClick();
+      }}
+      draggable
+      onDragMove={(e) => {
+        onMove({ x: e.target.x(), y: e.target.y() });
       }}
     />
   )
