@@ -6,9 +6,10 @@ type GetPath = {
   curve: number,
   height: number,
   fontSize: number,
+  width: number,
 }
 
-export const getPath = ({ radius, textWidth, curve, height, fontSize }: GetPath) => {
+export const getPath = ({ radius, textWidth, curve, height, fontSize, width }: GetPath) => {
   if (curve === 0) {
     const path = dataPathLib.getLineDataPath({
       width: textWidth,
@@ -21,6 +22,7 @@ export const getPath = ({ radius, textWidth, curve, height, fontSize }: GetPath)
   });
   const path = dataPathLib.getCircleDataPath({
     height,
+    width,
     x: radius,
     y: radius,
     r: radius,

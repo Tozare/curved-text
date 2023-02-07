@@ -40,6 +40,7 @@ const RadiusPreviewView = ({
         width={width}
         height={height}
         x={x - (curve === 0 ? 0 : deltaX) - (curve > 0 ? fontSize : 0)}
+        // x={x}
         y={y}
         data={path}
       />

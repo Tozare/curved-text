@@ -87,6 +87,7 @@ export const CurvedText = ({
             top: `${y + (curve > 0 ? 0 : 0)}px`,
             //left: `${x - deltaX - (curve > 0 ? fontSize/2 : 0)}px`,
             left: `${x - (curve === 0 ? 0 : deltaX) - (curve > 0 ? fontSize : 0)}px`,
+            // left: `${x - (curve === 0 ? 0 : deltaX)}px`,
             // left: `${x}px`,
             opacity: isInputModeOpened ? 0.2 : 1,
             // backgroundColor: "blue",
@@ -95,7 +96,7 @@ export const CurvedText = ({
         }}
       >
         <div
-          style={{ width: "100%", height: "100%" }}
+          style={{ width: "100%", height: "100%", position: "relative" }}
           onDoubleClick={() => {
             onDoubleClick()
           }}
@@ -103,7 +104,19 @@ export const CurvedText = ({
             curveTextMovingStarted();
           }}
         >
-          <svg style={{ pointerEvents: "none", userSelect: "none" }} width={w+fontSize + 20 + difRadius + (curve === 0 ? 10000 : 0)} height={w+fontSize + 20 + difRadius} viewBox={`0 0 ${w+fontSize + 20  + difRadius + (curve === 0 ? 10000 : 0)} ${w+fontSize + 20 + difRadius}`} xmlns="http://www.w3.org/2000/svg">
+          <svg
+            style={{
+              pointerEvents: "none",
+              userSelect: "none",
+              // backgroundColor: "green",
+              // position: "absolute",
+              // left: `${-deltaX}px`
+            }}
+            width={(curve === 0 ? width : w)+28}
+            height={(curve === 0 ? height : w)+28}
+            viewBox={`0 0 ${(curve === 0 ? width : w)+28} ${(curve === 0 ? height : w)+28}`}
+            xmlns="http://www.w3.org/2000/svg"
+          >
             <path
               id="curved-text-path"
               fill="none"

@@ -23,9 +23,9 @@ export const getTextBoundingWidth = ({ radius, textWidth, curve, lineHeight }: G
   let additionalWidth = 0;
   if (curve > 0) {
     if (textWidth > Math.PI * radius) {
-      additionalWidth = 14 + 14;
+      additionalWidth = lineHeight + lineHeight;
     } else {
-      additionalWidth = 28 * Math.sin(rotationLib.GetCircleSegmentAngle({
+      additionalWidth = 2 * lineHeight * Math.sin(rotationLib.GetCircleSegmentAngle({
         radius,
         segment: textWidth
       })/2);

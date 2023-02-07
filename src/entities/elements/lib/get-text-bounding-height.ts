@@ -9,7 +9,7 @@ type GetTextBoundingHeight = {
 
 export const getTextBoundingHeight = ({ radius, textWidth, curve, lineHeight }: GetTextBoundingHeight) => {
   if (radius === 0) {
-    return 14;
+    return lineHeight;
   }
   let res = 0;
   if (textWidth >= 2 * Math.PI * radius) {
@@ -27,18 +27,24 @@ export const getTextBoundingHeight = ({ radius, textWidth, curve, lineHeight }: 
   }
   let charHeightAddition = 0;
   if (curve < 0 && textWidth < Math.PI * radius) {
-    charHeightAddition = 14 * Math.cos(rotationLib.GetCircleSegmentAngle({
+    charHeightAddition = lineHeight * Math.cos(rotationLib.GetCircleSegmentAngle({
       radius,
       segment: textWidth
     })/2)
   } else if (curve > 0 && textWidth > Math.PI * radius && textWidth < 2 *  Math.PI * radius) {
-    charHeightAddition = 7 * Math.cos(rotationLib.GetCircleSegmentAngle({
+    charHeightAddition = (lineHeight) + (lineHeight) * Math.cos(rotationLib.GetCircleSegmentAngle({
       radius,
       segment: 2 * Math.PI * radius - textWidth
     })/2)
   } else if (curve > 0 && textWidth >= 2 *  Math.PI * radius) {
-    charHeightAddition = 7;
+    charHeightAddition = lineHeight + lineHeight;
+  } else if (curve > 0) {
+    charHeightAddition = lineHeight;
+    //   (lineHeight) * Math.cos(rotationLib.GetCircleSegmentAngle({
+    //   radius,
+    //   segment: textWidth
+    // })/2);
   }
   // return res + charHeightAddition;
-  return res + (curve > 0 ? 14 : 0) + charHeightAddition;
+  return res + charHeightAddition;
 }
