@@ -4,9 +4,10 @@ type GetTextBoundingWidth = {
   radius: number,
   textWidth: number,
   curve: number,
+  lineHeight: number,
 }
 
-export const getTextBoundingWidth = ({ radius, textWidth, curve }: GetTextBoundingWidth) => {
+export const getTextBoundingWidth = ({ radius, textWidth, curve, lineHeight }: GetTextBoundingWidth) => {
   if (radius === 0) {
     return textWidth;
   }
@@ -19,5 +20,18 @@ export const getTextBoundingWidth = ({ radius, textWidth, curve }: GetTextBoundi
       segment: textWidth
     })/2);
   }
-  return res + (curve > 0 ? 14 : 0);
+  let additionalWidth = 0;
+  if (curve > 0) {
+    if (textWidth > Math.PI * radius) {
+      additionalWidth = 14 + 14;
+    } else {
+      additionalWidth = 28 * Math.sin(rotationLib.GetCircleSegmentAngle({
+        radius,
+        segment: textWidth
+      })/2);
+    }
+  }
+
+
+  return res + additionalWidth;
 }

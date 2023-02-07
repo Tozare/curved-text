@@ -75,7 +75,7 @@ export const DEFAULT_TEXT_ELEMENT: TextElement = {
   lineHeight: 14,
   textAlign: TEXT_ALIGN_TYPES.LEFT,
   fontStyle: TEXT_FONT_STYLES_TYPES.NORMAL,
-  text: "design your curved text with ease",
+  text: "DESIGN YOUR CURVED TEXT WITH EASE",
   // path: "M 72.5 72.5\n" +
   //   "    m -61.27534460371188 -38.75025346622082\n" +
   //   "    a 72.5 72.5 0 1,1 122.55068920742376, 77.50050693244164\n" +

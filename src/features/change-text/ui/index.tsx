@@ -63,7 +63,6 @@ export const View = ({
   });
 
   useEffect(() => {
-    console.log(ref.current);
     if (ref.current) {
       const textarea = ref.current;
       textarea.focus();

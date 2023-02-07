@@ -84,9 +84,9 @@ export const CurvedText = ({
             position: 'absolute',
             width: `${width}px`,
             height: `${height}px`,
-            top: `${y + (curve < 0 ? 0 : 0)}px`,
+            top: `${y + (curve > 0 ? 0 : 0)}px`,
             //left: `${x - deltaX - (curve > 0 ? fontSize/2 : 0)}px`,
-            left: `${x - (curve === 0 ? 0 : deltaX) - (curve > 0 ? fontSize/2 : 0)}px`,
+            left: `${x - (curve === 0 ? 0 : deltaX) - (curve > 0 ? fontSize : 0)}px`,
             // left: `${x}px`,
             opacity: isInputModeOpened ? 0.2 : 1,
             // backgroundColor: "blue",
@@ -103,7 +103,7 @@ export const CurvedText = ({
             curveTextMovingStarted();
           }}
         >
-          <svg style={{ pointerEvents: "none", userSelect: "none" }} width={w+fontSize + difRadius + (curve === 0 ? 10000 : 0)} height={w+fontSize + difRadius} viewBox={`0 0 ${w+fontSize + difRadius + (curve === 0 ? 10000 : 0)} ${w+fontSize + difRadius}`} xmlns="http://www.w3.org/2000/svg">
+          <svg style={{ pointerEvents: "none", userSelect: "none" }} width={w+fontSize + 20 + difRadius + (curve === 0 ? 10000 : 0)} height={w+fontSize + 20 + difRadius} viewBox={`0 0 ${w+fontSize + 20  + difRadius + (curve === 0 ? 10000 : 0)} ${w+fontSize + 20 + difRadius}`} xmlns="http://www.w3.org/2000/svg">
             <path
               id="curved-text-path"
               fill="none"
@@ -111,15 +111,26 @@ export const CurvedText = ({
             />
             <text>
               <textPath
-                style={{ pointerEvents: "none", userSelect: "none" }}
+                style={{
+                  pointerEvents: "none",
+                  userSelect: "none",
+                  fill: fill,
+                  letterSpacing:`${letterSpacing}px`,
+                  fontStyle: fontStyle,
+                  fontSize: `${fontSize}px`,
+                  fontWeight: fontWeight,
+                  fontFamily: fontFamily,
+                  lineHeight: `${lineHeight}px`,
+                  backgroundColor: "green",
+              }}
                 href="#curved-text-path"
-                color={fill}
+                // color={fill}
                 spacing={letterSpacing}
-                fontStyle={fontStyle}
-                fontSize={`${fontSize}px`}
-                fontWeight={`${fontWeight}px`}
-                letterSpacing={`${letterSpacing}px`}
-                fontFamily={fontFamily}
+                // fontStyle={fontStyle}
+                // fontSize={`${fontSize}px`}
+                // fontWeight={`${fontWeight}px`}
+                // letterSpacing={`${letterSpacing}px`}
+                // fontFamily={fontFamily}
               >
                 {text}
               </textPath>
